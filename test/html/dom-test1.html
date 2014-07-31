@@ -73,12 +73,11 @@
     </div>
 </body>
 <script type="text/javascript">
-    var arr1=['a','b','c','e','d','a','b','f','k','y'];
+    var arr1=['a','b','c','e','d','a','b','f','k','y','a','b'];
     var arr2=['a','b'];
     var obj={};
     for(var i=0,j=arr2.length;i<j;i++){
-        
-            obj[arr2[i]]=0;
+        obj[arr2[i]]=0;
     }
     for(var i=0,j=arr1.length;i<j;i++){
         if(obj.hasOwnProperty(arr1[i])){
@@ -88,7 +87,7 @@
     console.log(obj);
 
 </script>
-<script type="text/javascript" src="../js/common/basic.js"></script>
+<script type="text/javascript" src="../../js/myJs.js"></script>
 <script type="text/javascript">
     ready(function() {
         D.removeClass(D.$('.item'));
