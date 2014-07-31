@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>测试选择器</title>
+    <style type="text/css">
+        * {
+            margin:0;
+            padding:0;
+        }
+        body {
+            font:12px/1.5 arail;
+            margin:10px;
+            width:100px;
+            height: 200px;
+        }
+        /**/
+        a {
+            text-decoration:none;
+        }
+        /*div:hover, input:hover, button:hover, a:hover {
+            background:#fefefe;
+            cursor:pointer;
+            box-shadow:1px 1px 1px #eee;
+            border:1px solid #ddd;
+        }*/
+        .it1, .it2 {
+            border: 2px solid orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-btn"></div>
+    <h1>id</h1>
+    <div id="box" class="tgClass">
+        <ul>
+            <li class="item">id item1</li>
+            <li class="item">id item2</li>
+            <li class="item">id item3</li>
+        </ul>
+        <ul>
+            <li class="item">id item1</li>
+            <li class="item item2">id item2</li>
+            <li class="item item3">id item3</li>
+        </ul>
+    </div>
+    <h1>单标签嵌套</h1>
+    <div class="tgClass">
+        <div>
+            <div><span>1111</span>
+            </div>
+            <span>2222</span>
+        </div>
+    </div>
+    <h2>类别嵌套</h2>
+    <div class="box1 box2">
+        <div class="box1">
+            <div class="box1">
+                <span>
+                    <a href="#">class nested 1111</a>
+                </span>
+            </div>
+        </div>
+        <div class="box1">
+            <div class="box1">
+                <span>
+                    <a href="#">class nested 2222</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var arr1=['a','b','c','e','d','a','b','f','k','y'];
+    var arr2=['a','b'];
+    var obj={};
+    for(var i=0,j=arr2.length;i<j;i++){
+        
+            obj[arr2[i]]=0;
+    }
+    for(var i=0,j=arr1.length;i<j;i++){
+        if(obj.hasOwnProperty(arr1[i])){
+            obj[arr1[i]]+=1;
+        }
+    }
+    console.log(obj);
+
+</script>
+<script type="text/javascript" src="../js/common/basic.js"></script>
+<script type="text/javascript">
+    ready(function() {
+        D.removeClass(D.$('.item'));
+        // D.addClass(D.$('div'),'it1 it2');
+        // D.addClass(D.$('#box'),'it1 it2');
+        // D.toggleClass(D.$('div'),'tgClass');
+        E.delegate('click', '#box ul', '.item2', function(e) {
+
+            // console.log(e.target);
+        });
+
+        E.delegate('click', '.box-btn', 'button', function(e) {
+            console.log(e.target);
+            // alert('you click me!');
+        });
+        D.html(D.$('.box-btn')[0], '<button>click me</button>');
+        // D.text(D.$('.box-btn')[0],'<p>dulalalalalllalal</p>');
+        // D.$('.box-btn')[0];
+        // D.css(D.$('body'), {
+        //     'background': '#000',
+        //     'font-size': '24px',
+        //     'color': '#fff'
+        // });
+        // var c=D.css(D.$('#box'),'background-color');
+        // alert(c);
+        console.log(D.css(D.$('body'), 'width'));
+
+        var f = function(a, b) {
+            return a + b;
+        };
+
+        var on = Utils.once(f);
+        var b = on(2, 3);
+        console.log(on(3, 4));
+
+        D.hide(D.$('div'));
+        D.show(D.$('div'));
+
+
+        var a = {
+            name: 'xiaoqiang',
+            age: 23
+        };
+        var b = {
+            name: 'zhu',
+            age: 22,
+            obj: [1, 2, 3],
+            obj2: [{
+                exp: '4'
+            }]
+        };
+
+        var c = Utils.extend(a, b);
+        console.log(c);
+
+        console.log(a,b);
+    });
+</script>
+<!-- <script type="text/javascript" src="../js/common/jquery-1.8.2.js"></script> -->
+<script type="text/javascript">
+    // document.addEventListener('DOMContentLoaded', function() {
+
+    // }, false);
+    // window.onload = function() {
+    //     /*var txt = $('.box1.box2 .box1');
+    //     // alert(txt.innerHTML);
+    //     alert(txt[0].innerText);*/
+    //     console.log(D.getPrevAll(D.$('.item3')[0]));
+    //     var txt2 =D.$('span');
+    //     var txt3=D.$('#box ul li.item');
+    //     alert(D.eq('#box ul li.item',1).innerText);
+    //     alert(txt2[0].innerText);
+    //     alert(txt3[0].innerText);
+    //     // getIndex test
+    //     alert(D.getIndex(D.$('.item2')[0],D.$('#box li')));
+    //     // hasClass test
+    //     alert(D.hasClass(D.$('.item2')[0],'item'));
+
+    // };
+</script>
+
+</html>
