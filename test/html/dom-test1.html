@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <div class="box-btn"></div>
+    <div class="box-btn" onclick="test(this)"></div>
     <h1>id</h1>
     <div id="box" class="tgClass">
         <ul>
@@ -88,6 +88,12 @@
 
 </script>
 <script type="text/javascript" src="../../js/myJs.js"></script>
+<script type="text/javascript">
+    var test=function(ob){
+        console.log(ob);
+        alert(this===window);
+    };
+</script>
 <script type="text/javascript">
     ready(function() {
         D.removeClass(D.$('.item'));

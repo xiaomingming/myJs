@@ -217,7 +217,8 @@ Utils.once = function(fn) {
 };
 // 判断一个对象是否为空
 Utils.isEmputyObj = function(obj) {
-    for (var i in obj) {
+    var props;
+    for (props in obj) {
         return false;
     }
     return true;
@@ -1009,12 +1010,70 @@ D.hide = function(ele) {
     }
 
 };
-// 这里也要支持nodeList对象
-D.data = function(ele, obj) {
-    if (Utils.isType(ele, 'array')) {
-        // 此时是一个DOM对象
-
+// ajax
+// 构造一个xmlHttpRequest对象
+var req = function() {
+    var httpReq = false;
+    if (XMLHttpRequest) {
+        httpReq = new XMLHttpRequest();
     }
+    if (ActiveXObject) {
+        try {
+            httpReq = new ActiveXObject('Msxm12.XMLHTTP');
+        } catch (e) {
+            httpReq = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+    }
+    return httpReq;
+};
+// 状态判断
+var ajaxState = function(req, callback) {
+    req.onreadystatechange = function() {
+        if (req.readyState === 4) {
+            if (req.status === 200) {
+                callback.success(req.responseText);
+            } else {
+                callback.fail(req.status);
+            }
+        }
+    };
+};
+// 发送
+var reqOpenSend = function(req, method, action, data, callback, flag) {
+    flag = flag || true;
+    var rdm = new Date();
+    action += '?time=rdm';
+    var str = '',
+        props;
+
+    req.open(method, action, flag);
+
+    if (method === 'post') {
+        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        req.send(data);
+    } else if (method === 'get') {
+        // 此处需要判断data是否存在
+        // 在此参数缺失情况下，如何处理
+        // 另外，需要处理data的数据类型
+        for (props in data) {
+            if (data.hasOwnProperty(props)) {
+                str += props + '=' + data[props] + '&';
+            }
+        }
+        data = str.replace(/&$/, '');
+
+        if (data === '') {
+            req.send(method, action + '?t=' + rdm, flag);
+        } else {
+            req.send(method, action + '?' + data, flag);
+        }
+    }
+};
+
+var ajax = function(method, action, data, callback, flag) {
+    var req = req();
+    reqOpenSend(req, method, action, data, flag);
+    ajaxState(req, callback);
 };
 // worklist 
 // data缓存和移除，promise简单实现，animate实现，ajax实现
