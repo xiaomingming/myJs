@@ -1075,5 +1075,7 @@ var ajax = function(method, action, data, callback, flag) {
     reqOpenSend(req, method, action, data, flag);
     ajaxState(req, callback);
 };
+
+
 // worklist 
 // data缓存和移除，promise简单实现，animate实现，ajax实现
