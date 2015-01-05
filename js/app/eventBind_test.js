@@ -1,11 +1,11 @@
-require(['domReady', 'eventBind'], function(ready, bind) {
+require(['domReady', 'evt'], function(ready, E) {
     ready(function() {
         var btn = document.getElementById('btn');
 
-        bind.addEvent(btn, 'click', function(e) {
+        E.addEvent(btn, 'click', function(e) {
             alert('1');
         });
-        bind.addEvent(btn, 'click', function(e) {
+        E.addEvent(btn, 'click', function(e) {
             alert('2');
         });
     });

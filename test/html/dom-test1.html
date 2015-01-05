@@ -5,28 +5,30 @@
     <meta charset="utf-8" />
     <title>测试选择器</title>
     <style type="text/css">
-        * {
-            margin:0;
-            padding:0;
-        }
-        body {
-            font:12px/1.5 arail;
-            margin:10px;
-            width:100px;
-            height: 200px;
-        }
-        a {
-            text-decoration:none;
-        }
-        /*div:hover, input:hover, button:hover, a:hover {
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font: 12px/1.5 arail;
+        margin: 10px;
+        width: 100px;
+        height: 200px;
+    }
+    a {
+        text-decoration: none;
+    }
+    /*div:hover, input:hover, button:hover, a:hover {
             background:#fefefe;
             cursor:pointer;
             box-shadow:1px 1px 1px #eee;
             border:1px solid #ddd;
         }*/
-        .it1, .it2 {
-            border: 2px solid orange;
-        }
+    .it1,
+    .it2 {
+        border: 2px solid orange;
+    }
+    .item { background: #eee; cursor: pointer; margin: 10px 0;}
     </style>
 </head>
 
@@ -48,7 +50,8 @@
     <h1>单标签嵌套</h1>
     <div class="tgClass">
         <div>
-            <div><span>1111</span>
+            <div>
+                <span>1111</span>
             </div>
             <span>2222</span>
         </div>
@@ -72,36 +75,36 @@
     </div>
 </body>
 <script type="text/javascript">
-    var arr1=['a','b','c','e','d','a','b','f','k','y','a','b'];
-    var arr2=['a','b'];
-    var obj={};
-    for(var i=0,j=arr2.length;i<j;i++){
-        obj[arr2[i]]=0;
+var arr1 = ['a', 'b', 'c', 'e', 'd', 'a', 'b', 'f', 'k', 'y', 'a', 'b'];
+var arr2 = ['a', 'b'];
+var obj = {};
+for (var i = 0, j = arr2.length; i < j; i++) {
+    obj[arr2[i]] = 0;
+}
+for (var i = 0, j = arr1.length; i < j; i++) {
+    if (obj.hasOwnProperty(arr1[i])) {
+        obj[arr1[i]] += 1;
     }
-    for(var i=0,j=arr1.length;i<j;i++){
-        if(obj.hasOwnProperty(arr1[i])){
-            obj[arr1[i]]+=1;
-        }
-    }
-    console.log(obj);
-
+}
+console.log(obj);
 </script>
-<script type="text/javascript" src="../../js/myJs.js"></script>
+<script type="text/javascript" src="../../js/libs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs-config.js"></script>
 <script type="text/javascript">
-    var test=function(ob){
-        console.log(ob);
-        alert(this===window);
-    };
+var test = function(ob) {
+    console.log(ob);
+    alert(this === window);
+};
 </script>
 <script type="text/javascript">
+require(['domReady', 'dom', 'evt', 'knife'], function(ready, D, E, Utils) {
     ready(function() {
-        D.removeClass(D.$('.item'));
+        // D.removeClass(D.$('.item'));
         // D.addClass(D.$('div'),'it1 it2');
         // D.addClass(D.$('#box'),'it1 it2');
         // D.toggleClass(D.$('div'),'tgClass');
         E.delegate('click', '#box ul', '.item2', function(e) {
-
-            // console.log(e.target);
+            alert(e.target);
         });
 
         E.delegate('click', '.box-btn', 'button', function(e) {
@@ -148,30 +151,31 @@
         var c = Utils.extend(a, b);
         console.log(c);
 
-        console.log(a,b);
+        console.log(a, b);
     });
+});
 </script>
 <!-- <script type="text/javascript" src="../js/common/jquery-1.8.2.js"></script> -->
 <script type="text/javascript">
-    // document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', function() {
 
-    // }, false);
-    // window.onload = function() {
-    //     /*var txt = $('.box1.box2 .box1');
-    //     // alert(txt.innerHTML);
-    //     alert(txt[0].innerText);*/
-    //     console.log(D.getPrevAll(D.$('.item3')[0]));
-    //     var txt2 =D.$('span');
-    //     var txt3=D.$('#box ul li.item');
-    //     alert(D.eq('#box ul li.item',1).innerText);
-    //     alert(txt2[0].innerText);
-    //     alert(txt3[0].innerText);
-    //     // getIndex test
-    //     alert(D.getIndex(D.$('.item2')[0],D.$('#box li')));
-    //     // hasClass test
-    //     alert(D.hasClass(D.$('.item2')[0],'item'));
+// }, false);
+// window.onload = function() {
+//     /*var txt = $('.box1.box2 .box1');
+//     // alert(txt.innerHTML);
+//     alert(txt[0].innerText);*/
+//     console.log(D.getPrevAll(D.$('.item3')[0]));
+//     var txt2 =D.$('span');
+//     var txt3=D.$('#box ul li.item');
+//     alert(D.eq('#box ul li.item',1).innerText);
+//     alert(txt2[0].innerText);
+//     alert(txt3[0].innerText);
+//     // getIndex test
+//     alert(D.getIndex(D.$('.item2')[0],D.$('#box li')));
+//     // hasClass test
+//     alert(D.hasClass(D.$('.item2')[0],'item'));
 
-    // };
+// };
 </script>
 
 </html>

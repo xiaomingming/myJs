@@ -159,7 +159,7 @@ define([], function() {
         };
     };
     // 判断一个对象是否为空
-    Utils.isEmputyObj = function(obj) {
+    Utils.isEmptyObj = function(obj) {
         var props;
         for (props in obj) {
             if (obj.hasOwnProperty(props)) {

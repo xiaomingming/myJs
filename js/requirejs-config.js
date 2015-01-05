@@ -11,7 +11,8 @@ require.config({
     baseUrl: staticURL,
     paths: {
         'domReady': 'utils/domReady',
-        'eventBind': 'utils/eventBind',
-        'knife':'utils/knife'
+        'evt': 'utils/event',
+        'knife': 'utils/knife',
+        'dom': 'utils/dom'
     }
 });
