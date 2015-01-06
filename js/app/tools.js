@@ -7,3 +7,4 @@ require(['knife'], function(knife) {
     console.log(knife.shuffleArr(arr));
     console.log(str, knife.trim(str), knife.trimLeft(str), knife.trimRight(str));
 });
+

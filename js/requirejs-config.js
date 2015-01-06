@@ -13,6 +13,7 @@ require.config({
         'domReady': 'utils/domReady',
         'evt': 'utils/event',
         'knife': 'utils/knife',
-        'dom': 'utils/dom'
+        'dom': 'utils/dom',
+        'ajax':'utils/ajax'
     }
 });
